@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Paris Landmarks</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+     crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+     crossorigin=""></script>
+    <style>
+        #map {
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        // Initialize the map
+        var map = L.map('map').setView([48.856613, 2.352222], 13);
+
+        // Add a tile layer (base map)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Custom icon for markers
+        var customIcon = L.icon({
+            iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41]
+        });
+
+        // Add markers with popups
+        L.marker([48.858370, 2.294481], {icon: customIcon}).addTo(map)
+            .bindPopup("<b>Eiffel Tower</b><br>The iconic iron lattice tower, one of the most famous landmarks in Paris.");
+
+        L.marker([48.860295, 2.337631], {icon: customIcon}).addTo(map)
+            .bindPopup("<b>Arc de Triomphe</b><br>The famous triumphal arch honoring those who fought for France.");
+
+        L.marker([48.853068, 2.349773], {icon: customIcon}).addTo(map)
+            .bindPopup("<b>Notre-Dame Cathedral</b><br>The historic Catholic cathedral, known for its French Gothic architecture.");
+    </script>
+</body>
+</html>
